@@ -1,10 +1,8 @@
-// routes/job.js
 const express = require('express');
 const router = express.Router();
 const Job = require('../models/job');
 const apiResponse = require('../utils/const');
 
-// Create a new job opening
 router.post('/', async (req, res) => {
   const { title, description, googleFormLink } = req.body;
   const newJob = new Job({ title, description, googleFormLink });
@@ -17,7 +15,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all job openings
 router.get('/', async (req, res) => {
   try {
     const jobs = await Job.find();
@@ -27,7 +24,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a specific job opening by ID
 router.get('/:id', async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -38,7 +34,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Update a job opening
 router.put('/:id', async (req, res) => {
   try {
     const updatedJob = await Job.findByIdAndUpdate(
@@ -53,7 +48,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a job opening
 router.delete('/:id', async (req, res) => {
   try {
     const deletedJob = await Job.findByIdAndDelete(req.params.id);
