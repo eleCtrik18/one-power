@@ -9,6 +9,11 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors({
+  origin: 'https://1energy.co', // Allow this specific origin
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+}));
+
 // Middleware
 app.use(bodyParser.json());
 
